@@ -1,7 +1,7 @@
 FROM alpine:3.9.5
 
 RUN apk --update --no-cache add \
-    musl-dev \
+    awscli \
     gcc \
     python3 \
     python3-dev \
@@ -10,6 +10,8 @@ RUN apk --update --no-cache add \
     && apk del \
     gcc \
     musl-dev \
+    make \
+    jq \
     && rm -rf /var/cache/apk/* /root/.cache/pip/*
 
 ENV NODE_VERSION 12.18.1
