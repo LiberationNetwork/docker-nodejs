@@ -1,18 +1,5 @@
 FROM alpine:3.9.5
 
-RUN apk --update --no-cache add \
-    musl-dev \
-    gcc \
-    python3 \
-    python3-dev \
-    zip \
-    && pip3 install --no-cache-dir --upgrade pip awscli==1.18.13 aws-sam-cli==0.43.0 \
-    && apk del \
-    gcc \
-    musl-dev \
-    jq \
-    && rm -rf /var/cache/apk/* /root/.cache/pip/*
-
 ENV NODE_VERSION 12.18.1
 
 RUN addgroup -g 1000 node \
@@ -111,3 +98,16 @@ COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD [ "node" ]
+
+RUN apk --update --no-cache add \
+    musl-dev \
+    gcc \
+    python3 \
+    python3-dev \
+    zip \
+    && pip3 install --no-cache-dir --upgrade pip awscli==1.18.13 aws-sam-cli==0.43.0 \
+    && apk del \
+    gcc \
+    musl-dev \
+    jq \
+    && rm -rf /var/cache/apk/* /root/.cache/pip/*
