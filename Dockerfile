@@ -4,6 +4,7 @@ RUN apk --update --no-cache add \
     musl-dev \
     gcc \
     python3 \
+    cmd:pip3 \
     python3-dev \
     zip \
     jq \
