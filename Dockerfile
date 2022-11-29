@@ -1,4 +1,4 @@
-FROM node:12.18.1-alpine3.9
+FROM node:14.21.1-alpine3.16
 
 RUN apk --update --no-cache add \
     musl-dev \
